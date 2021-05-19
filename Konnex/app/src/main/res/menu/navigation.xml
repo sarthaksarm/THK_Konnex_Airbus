@@ -3,12 +3,13 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/voice"
+        android:icon="@drawable/navigation"
         android:title="Navigation"
         />
+
     <item
         android:id="@+id/navigation_chatbot"
-        android:icon="@drawable/voice"
+        android:icon="@drawable/support_bot"
         android:title="Chatbot" />
 <!--        <item-->
 <!--        android:id="@+id/navigation_chatbot"-->
@@ -17,17 +18,17 @@
 
     <item
         android:id="@+id/navigation_feedback"
-        android:icon="@drawable/voice"
+        android:icon="@drawable/bug"
         android:title="Report" />
 
     <item
         android:id="@+id/navigation_announce"
-        android:icon="@drawable/voice"
+        android:icon="@drawable/announcement"
         android:title="Announcements" />
 
     <item
         android:id="@+id/navigation_performance"
-        android:icon="@drawable/voice"
+        android:icon="@drawable/usage"
         android:title="Performance" />
 
 
