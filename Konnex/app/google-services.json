@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1037164342389",
+    "project_id": "konnex-airbus",
+    "storage_bucket": "konnex-airbus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037164342389:android:e87fcabb0f2750635d9c3c",
+        "android_client_info": {
+          "package_name": "com.sarm.konnex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037164342389-mgjha9uib09tnj53s4dq9uf84c7c005c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkbmkgklghMY7zYHZnMc2_Fczxq4QCvRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037164342389-mgjha9uib09tnj53s4dq9uf84c7c005c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
