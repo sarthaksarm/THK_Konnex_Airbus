@@ -3,32 +3,32 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/voice"
         android:title="Navigation"
         />
     <item
-        android:id="@+id/navigation_voice"
+        android:id="@+id/navigation_chatbot"
         android:icon="@drawable/voice"
         android:title="Chatbot" />
-        <item
-        android:id="@+id/navigation_chatbot"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="Chatbot" />
+<!--        <item-->
+<!--        android:id="@+id/navigation_chatbot"-->
+<!--        android:icon="@drawable/voice"-->
+<!--        android:title="Chatbot" />-->
 
     <item
         android:id="@+id/navigation_feedback"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="Report bug" />
+        android:icon="@drawable/voice"
+        android:title="Report" />
 
     <item
         android:id="@+id/navigation_announce"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/voice"
         android:title="Announcements" />
 
     <item
         android:id="@+id/navigation_performance"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="Measure performance" />
+        android:icon="@drawable/voice"
+        android:title="Performance" />
 
 
 </menu>

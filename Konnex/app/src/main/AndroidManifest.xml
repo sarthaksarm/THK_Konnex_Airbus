@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Konnex">
-        <activity android:name=".Performance"></activity>
+        <activity android:name=".ChatBot"></activity>
+        <activity android:name=".Performance" />
         <activity android:name=".Announcements" />
         <activity android:name=".NavSearch" />
         <activity android:name=".ReportBug" />
