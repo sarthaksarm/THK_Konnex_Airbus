@@ -1,71 +1,53 @@
 package com.sarm.konnex;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.sarm.konnex.adapter.MainPagerAdapter;
+import com.sarm.konnex.db.KDatabase;
+import com.sarm.konnex.db.model.Bug;
+import com.sarm.konnex.helper.KPref;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Intent i=new Intent(MainActivity.this,NavSearch.class);
-                    Toast.makeText(MainActivity.this, "Switching to Application Navigation page", Toast.LENGTH_LONG).show();
-                    startActivity(i);
-                    return true;
-//                case R.id.navigation_voice:
-//                    //voice();
-//                    return true;
-
-                case R.id.navigation_chatbot:
-                    Intent i1=new Intent(MainActivity.this,ChatBot.class);
-                    Toast.makeText(MainActivity.this, "Contacting Chat-bot support", Toast.LENGTH_LONG).show();
-                    startActivity(i1);
-                    return true;
-
-                case R.id.navigation_feedback:
-                    Intent i2=new Intent(MainActivity.this,ReportBug.class);
-                    Toast.makeText(MainActivity.this, "Opening a 'Report Bug' case", Toast.LENGTH_LONG).show();
-                    startActivity(i2);
-                    return true;
-
-                case R.id.navigation_announce:
-                    Intent i3=new Intent(MainActivity.this,Announcements.class);
-                    Toast.makeText(MainActivity.this, "Checking Collective Announcements section", Toast.LENGTH_LONG).show();
-                    startActivity(i3);
-                    return true;
-
-                case R.id.navigation_performance:
-                    Intent i4=new Intent(MainActivity.this,Performance.class);
-                    Toast.makeText(MainActivity.this, "Measuring application usage and performance", Toast.LENGTH_LONG).show();
-                    startActivity(i4);
-                    return true;
-            }
-            return false;
-        }
-    };
+    private KDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        database = Room.databaseBuilder(MainActivity.this, KDatabase.class, KDatabase.DB_NAME).build();
+        if(! KPref.getUserInstance(MainActivity.this)) {
+            writeSomeDummyBugs();
+            KPref.storeUserInstance(MainActivity.this);
+        }
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ViewPager viewPager = findViewById(R.id.bottom_nav);
+        viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
 
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
+        for(int i = 0; i < tabLayout.getTabCount(); i++){
+            tabLayout.getTabAt(i).setIcon(KConstants.TAB_ICONS[i]);
+        }
+    }
+
+    private void writeSomeDummyBugs() {
+        List<Bug> bugs = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            bugs.add(new Bug("Bug " + i, "Bug des " + i, "User " + i));
+        }
+
+        new Thread(){
+            @Override
+            public void run() {
+                database.bugDao().insertBugList(bugs);
+            }
+        }.start();
     }
 }
