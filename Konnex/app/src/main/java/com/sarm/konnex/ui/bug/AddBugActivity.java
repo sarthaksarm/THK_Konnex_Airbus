@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AddBugActivity extends AppCompatActivity {
-
     private TextInputEditText bugTitle;
     private TextInputEditText userName;
     private TextInputEditText bugDescription;

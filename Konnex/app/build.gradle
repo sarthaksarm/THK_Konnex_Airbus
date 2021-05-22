@@ -43,6 +43,10 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.3.0')
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    debugCompile "com.github.brianPlummer:tinydancer:0.1.2"
+    releaseCompile "com.github.brianPlummer:tinydancer-noop:0.1.2"
+    testCompile "com.github.brianPlummer:tinydancer-noop:0.1.2"
+
     implementation 'com.google.firebase:firebase-database:15.0.1'
     implementation 'com.firebaseui:firebase-ui-database:0.4.0'
     implementation 'com.google.firebase:firebase-auth:16.0.3'

@@ -13,7 +13,6 @@
             android:name=".ui.bug.AddBugActivity"
             android:theme="@style/Theme.Konnex.NoActionBar"/>
 
-        <activity android:name=".ChatBot"/>
         <activity android:name=".Performance" />
         <activity android:name=".Announcements" />
         <activity android:name=".NavSearch" />
